@@ -54,7 +54,7 @@ class PurchaseController extends Controller
     public function store(Request $request)
     {
 
-        try
+         try
         {
             if($request->isNotFilled('id'))
             {
@@ -84,7 +84,7 @@ class PurchaseController extends Controller
                 {
                     $qty = $request->qty[$key];
                 $pprice = $request->pprice[$key];
-                $price = $request->price[$key];
+               /*  $price = $request->price[$key]; */
                 $amount = $pprice * $qty;
                 $total += $amount;
 
@@ -93,7 +93,7 @@ class PurchaseController extends Controller
                         'purchaseID'    => $purchase->id,
                         'productID'     => $id,
                         'pprice'        => $pprice,
-                        'price'         => $price,
+                       /*  'price'         => $price, */
                         'qty'           => $qty,
                         'amount'        => $amount,
                         'date'          => $request->date,
@@ -107,7 +107,6 @@ class PurchaseController extends Controller
                 $product->update(
                     [
                         'pprice' => $pprice,
-                        'price'  => $price,
                     ]
                 );
                 }
@@ -164,7 +163,7 @@ class PurchaseController extends Controller
             {
                 createTransaction($request->vendorID, $request->date, 0, $net, "Pending Amount of Purchase No. $purchase->id", $ref);
             }
-            DB::commit();
+           DB::commit();
             return back()->with('success', "Purchase Created");
 
         }
@@ -251,7 +250,7 @@ class PurchaseController extends Controller
                 {
                     $qty = $request->qty[$key];
                 $pprice = $request->pprice[$key];
-                $price = $request->price[$key];
+               /*  $price = $request->price[$key]; */
                 $amount = $pprice * $qty;
                 $total += $amount;
 
@@ -260,7 +259,7 @@ class PurchaseController extends Controller
                         'purchaseID'    => $purchase->id,
                         'productID'     => $id,
                         'pprice'        => $pprice,
-                        'price'         => $price,
+                        /* 'price'         => $price, */
                         'qty'           => $qty,
                         'amount'        => $amount,
                         'date'          => $request->date,
@@ -274,7 +273,7 @@ class PurchaseController extends Controller
                 $product->update(
                     [
                         'pprice' => $pprice,
-                        'price'  => $price,
+                       /*  'price'  => $price, */
                     ]
                 );
                 }
