@@ -23,11 +23,11 @@
                             <div class="card-body p-4 pb-0 pt-0">
                                 <div class="row g-3">
                                     <div class="col-3">
-                                        <p class="text-muted mb-2 text-uppercase fw-semibold">Inv #</p>
+                                        <p class="text-muted mb-2 text-uppercase fw-semibold">Vouchar #</p>
                                         <h5 class="fs-14 mb-0">{{$sale->id}}</h5>
                                     </div>
                                     <div class="col-6">
-                                        <p class="text-muted mb-2 text-uppercase fw-semibold">Salesman</p>
+                                        <p class="text-muted mb-2 text-uppercase fw-semibold">Chief</p>
                                         <h5 class="fs-14 mb-0">{{$sale->customer->title}}</h5>
                                        
                                     </div>

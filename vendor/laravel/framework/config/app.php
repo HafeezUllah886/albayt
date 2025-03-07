@@ -90,7 +90,7 @@ return [
     'domains' => [
         'razaq_stock_2.test',
         'deluxe-s.test',
-        'deluxe.diamondquetta.com',
+        'albayt.diamondquetta.com',
         'testmillat.diamondquetta.com',
         'deluxe.run',
     ],
@@ -98,12 +98,13 @@ return [
     'databases' => [
         'razaq2',
         'test',
+        'albayt'
     ],
 
     'files' =>
     [
-        '320259',
-        '320259'
+        '216181',
+        '216181'
     ],
 
     /*

@@ -23,8 +23,8 @@ class accountSeeder extends Seeder
 
         accounts::create(
             [
-                'title' => "Salesman",
-                'type' => "Salesman",
+                'title' => "Chief",
+                'type' => "Chief",
                 
             ]
         );

@@ -16,9 +16,9 @@ class accounts extends Model
         return $query->where('type', 'Business');
     }
 
-    public function scopeSalesman($query)
+    public function scopeChief($query)
     {
-        return $query->where('type', 'Salesman');
+        return $query->where('type', 'Chief');
     }
 
     public function scopeCompany($query)

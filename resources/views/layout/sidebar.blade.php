@@ -150,8 +150,8 @@
                                     Business Accounts </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('accountsList', 'Salesman') }}" class="nav-link"
-                                    data-key="t-checkboxs-radios">Salesmans</a>
+                                <a href="{{ route('accountsList', 'Chief') }}" class="nav-link"
+                                    data-key="t-checkboxs-radios">Chief</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('accountsList', 'Company') }}" class="nav-link"

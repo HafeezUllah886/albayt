@@ -45,7 +45,7 @@ class SalesController extends Controller
     {
         $products = products::orderby('name', 'asc')->get();
         $warehouses = warehouses::all();
-        $customers = accounts::Salesman()->get();
+        $customers = accounts::Chief()->get();
         $cats = categories::orderBy('name', 'asc')->get();
         return view('sales.create', compact('products', 'warehouses', 'customers', 'cats'));
     }

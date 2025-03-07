@@ -59,7 +59,7 @@
                             </div>
                             <div class="col-3 mt-2">
                                 <div class="form-group">
-                                    <label for="customer">Salesman</label>
+                                    <label for="customer">Cheif</label>
                                     <select name="customerID" id="customerID" class="selectize1">
                                         @foreach ($customers as $customer)
                                             <option value="{{ $customer->id }}">{{ $customer->title }}</option>

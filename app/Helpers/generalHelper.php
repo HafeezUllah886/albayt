@@ -189,10 +189,10 @@ function warehouseProductStockValue($id, $warehouse)
 
 function projectName()
 {
-    return "RAZAQ STOCK";
+    return "ALBAYT BBQ";
 }
 function projectNameShort()
 {
-    return "RS";
+    return "BBQ";
 }
 
