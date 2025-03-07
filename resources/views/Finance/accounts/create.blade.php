@@ -31,7 +31,7 @@
                                     <label for="type">Type</label>
                                     <select name="type" id="type" class="form-control">
                                         <option value="Business">Business</option>
-                                        <option value="Salesman">Salesman</option>
+                                        <option value="Chief">Chief</option>
                                         <option value="Company">Company</option>
                                     </select>
                                 </div>
