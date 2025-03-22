@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('pprice');
             $table->string('code')->nullable();
             $table->integer('alert')->default(0);
+            $table->string('img')->default('default/no-img.jpg');
             $table->timestamps();
         });
     }

@@ -6,6 +6,8 @@ use App\Models\categories;
 use App\Models\products;
 use App\Models\units;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Imagick\Driver;
 
 class ProductsController extends Controller
 {
@@ -37,8 +39,19 @@ class ProductsController extends Controller
         {
             return back()->with('error', 'Product already Existing');
         }
+        
+        $product = products::create($request->all());
+        $photo_path1 = null;
+        if($request->hasFile('img')){
 
-        products::create($request->all());
+            $image = $request->file('img');
+            $filename = $request->code.".".$image->getClientOriginalExtension();
+            $image_path = public_path('/files/items/'.$filename);
+            $photo_path1 = '/files/items/'.$filename;
+            $image->move(public_path('/files/items/'), $filename);
+
+            $product->update(['img' => $photo_path1]);
+        }
 
         return back()->with('success', 'Product Created');
     }
@@ -73,6 +86,17 @@ class ProductsController extends Controller
         $product = products::find($id);
         
         $product->update($request->all());
+        $photo_path1 = null;
+        if($request->hasFile('img')){
+
+            $image = $request->file('img');
+            $filename = $request->code.".".$image->getClientOriginalExtension();
+            $image_path = public_path('/files/items/'.$filename);
+            $photo_path1 = '/files/items/'.$filename;
+            $image->move(public_path('/files/items/'), $filename);
+
+            $product->update(['img' => $photo_path1]);
+        }
 
         return back()->with('success', 'Product Updated');
     }

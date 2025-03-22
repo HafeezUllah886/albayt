@@ -22,6 +22,7 @@
                     <table class="table" id="buttons-datatables">
                         <thead>
                             <th>#</th>
+                            <th>Image</th>
                             <th>Code</th>
                             <th>Name</th>
                             <th>Category</th>
@@ -35,6 +36,7 @@
                             @foreach ($items as $key => $item)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
+                                    <td><img src="{{ $item->img }}" style="width:100px;"></td>
                                     <td>{{ $item->code }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->category->name }}</td>
@@ -56,7 +58,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"> </button>
                                             </div>
-                                            <form action="{{ route('product.update', $item->id) }}" method="post">
+                                            <form action="{{ route('product.update', $item->id) }}" enctype="multipart/form-data" method="post">
                                                 @csrf
                                                 @method('patch')
                                                 <div class="modal-body">
@@ -112,6 +114,19 @@
                                                             value="{{ $item->discount }}" min="0"
                                                             id="discount" class="form-control">
                                                     </div> --}}
+                                                    <div class="row">
+                                                        <div class="col-md-6 mt-2">
+                                                            <div class="form-group">
+                                                                <input type="file" id="image1" name="img" class="form-control" accept="image/*">
+                                                                @error('image')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 mt-2">
+                                                            <img id="imagePreview1" src="{{$item->img}}" alt="Image Preview" style="display: none; max-width: 150px; max-height: 150px;">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-light"
@@ -140,7 +155,7 @@
                     <h5 class="modal-title" id="myModalLabel">Create New Product</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                 </div>
-                <form action="{{ route('product.store') }}" method="post">
+                <form action="{{ route('product.store') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group mt-2">
@@ -179,10 +194,19 @@
                                  min="0" id="alert"
                                 class="form-control">
                         </div>
-                       {{--  <div class="form-group mt-2">
-                            <label for="discount">Discount</label>
-                            <input type="number" step="any" name="discount" required value="0" min="0" id="discount" class="form-control">
-                        </div> --}}
+                        <div class="row">
+                            <div class="col-md-6 mt-2">
+                                <div class="form-group">
+                                    <input type="file" id="image" required name="img" class="form-control" accept="image/*">
+                                    @error('image')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <img id="imagePreview" src="#" alt="Image Preview" style="display: none; max-width: 150px; max-height: 150px;">
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
@@ -213,4 +237,26 @@
     <script src="{{ asset('assets/libs/datatable/jszip.min.js')}}"></script>
 
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+    // Listen for changes in the file input
+    $("#image").change(function () {
+        // Get the selected file
+        var file = this.files[0];
+        if (file) {
+            // Create a FileReader
+            var reader = new FileReader();
+            // Set a function to run when the file is loaded
+            reader.onload = function (e) {
+                // Set the source of the image element to the Data URL
+                $("#imagePreview").attr("src", e.target.result);
+                // Display the image element
+                $("#imagePreview").show();
+            };
+            // Read the file as a Data URL
+            reader.readAsDataURL(file);
+        }
+    });
+    });
+    </script>
 @endsection
